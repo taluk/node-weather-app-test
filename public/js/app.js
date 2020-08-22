@@ -18,8 +18,8 @@ myForm.addEventListener('submit', (e) => {
         if(data.error){
             errMsg.textContent = data.error
         }else{
-            infoMsg.textContent = 'Forcast for location ['+data.location+'] is ['+data.forecast.summary+']'
-            errMsg.textContent=''
+            infoMsg.textContent = data.forecast
+            errMsg.textContent=data.location
         }
     })
 })
