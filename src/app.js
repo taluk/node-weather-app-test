@@ -71,7 +71,8 @@ app.get('/weather', (req,res) => {
             res.send({
                 location,
                 forecast: 'Wather is ' + forecastData.summary + ' with ' + forecastData.temperature + ' degrees, but feels like ' + forecastData.feels_like + ' degrees',
-                address:req.query.address
+                address:req.query.address,
+                weather_img:forecastData.img
             })        
         })
     })
