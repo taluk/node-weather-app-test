@@ -47,13 +47,14 @@ app.get('/help', (req,res) => {
 
 
 app.get('/weather', (req,res) => {
-    if(!req.query.address){
+    if(!req.query.address && !req.query.coord){
         return res.send({
-            error:'Must supply address to the uqery string'
+            error:'Must supply address to the query string'
         })
     }
 
-    geocode(req.query.address, (error,{latitude,longitude,location}={}) => {
+    const address = (req.query.address) ? encodeURIComponent(req.query.address) : req.query.coord
+    geocode(address, (error,{latitude,longitude,location}={}) => {
 
         if(error){
             return res.send({
